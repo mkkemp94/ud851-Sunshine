@@ -121,38 +121,23 @@ public class MainActivity extends AppCompatActivity
             @Override
             protected void onStartLoading() {
 
-//                if (args == null) {
-//                    return;
-//                }
-
                 if (mWeatherData != null) {
                     deliverResult(mWeatherData);
-                }
-
-                else {
+                } else {
                     mLoadingIndicator.setVisibility(View.VISIBLE);
                     forceLoad();
                 }
+
             }
 
             @Override
             public String[] loadInBackground() {
 
-//                /* If there's no zip code, there's nothing to look up. */
-//                if (args.size() == 0) {
-//                    return null;
-//                }
-
                 // Get the location from bundle
-                String location = SunshinePreferences.getPreferredWeatherLocation(MainActivity.this);
-
-                // Make sure it is not empty
-//                if (location == null || TextUtils.isEmpty(location)) {
-//                    return null;
-//                }
+                String locationQuery = SunshinePreferences.getPreferredWeatherLocation(MainActivity.this);
 
                 // Build a URL with location
-                URL weatherRequestUrl = NetworkUtils.buildUrl(location);
+                URL weatherRequestUrl = NetworkUtils.buildUrl(locationQuery);
 
                 try {
                     String jsonWeatherResponse = NetworkUtils
