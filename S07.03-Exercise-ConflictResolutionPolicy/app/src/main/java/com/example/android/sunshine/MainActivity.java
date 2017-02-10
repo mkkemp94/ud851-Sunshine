@@ -46,17 +46,25 @@ public class MainActivity extends AppCompatActivity implements
         LoaderCallbacks<String[]>,
         SharedPreferences.OnSharedPreferenceChangeListener {
 
+    // Used for log messages
     private static final String TAG = MainActivity.class.getSimpleName();
 
+    // Recycler view to show days list
     private RecyclerView mRecyclerView;
+
+    // Forecast adapter to set for recycler view
     private ForecastAdapter mForecastAdapter;
 
+    // Error message
     private TextView mErrorMessageDisplay;
 
+    // Loading indicator
     private ProgressBar mLoadingIndicator;
 
+    // Loader id
     private static final int FORECAST_LOADER_ID = 0;
 
+    // Boolean to check whether preferences have changed
     private static boolean PREFERENCES_HAVE_BEEN_UPDATED = false;
 
     @Override
